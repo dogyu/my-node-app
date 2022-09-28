@@ -1,4 +1,4 @@
 #!/bin/bash
 cd ~/app/back
-npm run start &
+/home/ec2-user/.nvm/versions/node/v14.20.0/bin/npm run start &
 pwd
