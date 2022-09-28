@@ -1,2 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
+cd ~/app/back
 npm run start &
+pwd
