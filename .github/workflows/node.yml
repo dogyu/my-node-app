@@ -33,7 +33,7 @@ jobs:
       working-directory: ${{env.working-directory}}
       
     - name: Copy Node
-      run: cp -r ./ ./deploy
+      run: cp -r ./* ./deploy
       working-directory: ${{env.working-directory}}      
     
     # - name: Copy appspec
