@@ -36,13 +36,13 @@ jobs:
       run: cp -r `ls -A | grep -v "deploy"` ./deploy
       working-directory: ${{env.working-directory}}      
     
-    # - name: Copy appspec
-    #   run: cp appspec.yml ./deploy
-    #   working-directory: ${{env.working-directory}}
+    - name: Copy appspec
+      run: cp appspec.yml ./deploy
+      working-directory: ${{env.working-directory}}
     
-    # - name: Copy script
-    #   run: cp ./scripts/*.sh ./deploy
-    #   working-directory: ${{env.working-directory}}
+    - name: Copy script
+      run: cp ./scripts/*.sh ./deploy
+      working-directory: ${{env.working-directory}}
 
     - name: zip create 
       run: zip -qq -r ./back.zip ./deploy
@@ -60,10 +60,10 @@ jobs:
       run: aws s3 cp --region ap-northeast-2 ./back.zip s3://cheolheelee01/
       working-directory: ${{env.working-directory}}
       
-    # - name: Deploy to AWS CodeDeploy
-    #   run: aws deploy create-deployment 
-    #     --application-name cheolheelee-deploy
-    #     --deployment-group-name cheolheelee-deploy-group
-    #     --file-exists-behavior OVERWRITE 
-    #     --s3-location bucket=cheolheelee01,bundleType=zip,key=back.zip
-    #     --region ap-northeast-2
+    - name: Deploy to AWS CodeDeploy
+      run: aws deploy create-deployment 
+        --application-name cheolheelee-deploy
+        --deployment-group-name cheolheelee-deploy-back
+        --file-exists-behavior OVERWRITE 
+        --s3-location bucket=cheolheelee01,bundleType=zip,key=back.zip
+        --region ap-northeast-2
